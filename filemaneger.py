@@ -1,5 +1,6 @@
 from victory import victory as vic
 from use_functions import my_bill
+import os
 while True:
     print('1.создать папку')
     print('2.удалить файл/папку')
@@ -16,9 +17,13 @@ while True:
 
     choice = int(input('Выберите пункт меню'))
     if choice == 1:
-        pass
+        dir = input('Имя каталога: ')
+        if not os.path.exists(dir):
+            os.mkdir(dir)
     elif choice == 2:
-        pass
+        dir = input('имя каталога для удаления: ')
+        if os.path.exists(dir):
+            os.rmdir(dir)
     elif choice == 3:
         pass
     elif choice == 4:
@@ -37,5 +42,7 @@ while True:
         pass
     elif choice == 11:
         pass
-    else:
+    elif choice == 12:
         break
+    else:
+        print('Неверный пункт меню')
