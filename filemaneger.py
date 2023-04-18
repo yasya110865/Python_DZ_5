@@ -1,6 +1,7 @@
 from victory import victory as vic
 from use_functions import my_bill
 import os
+import shutil
 while True:
     print('1.создать папку')
     print('2.удалить файл/папку')
@@ -25,23 +26,34 @@ while True:
         if os.path.exists(dir):
             os.rmdir(dir)
     elif choice == 3:
-        pass
+        filename = input('Имя файла для копирования: ')
+        newfilename = input('Имя нового файла: ')
+        shutil.copyfile(filename, newfilename)
     elif choice == 4:
-        pass
+        print(os.listdir(os.getcwd()))
     elif choice == 5:
-        pass
+        path = os.getcwd()
+        dirlist = []
+        for i in os.listdir(path):
+            if os.path.isdir(os.path.join(path, i)):
+                dirlist.append(i)
+        print(dirlist)
     elif choice == 6:
-        pass
+        path = os.getcwd()
+        filelist = [i for i in os.listdir(path) if os.path.isfile(os.path.join(path, i))]
+        print(filelist)
     elif choice == 7:
-        pass
+        print(os.uname())
     elif choice == 8:
-        pass
+        print(os.getlogin())
     elif choice == 9:
-        pass
+        n = int(input('Сколько раз играем?: '))
+        vic(n)
     elif choice == 10:
-        pass
+        my_bill()
     elif choice == 11:
-        pass
+        dirname = input('Введите имя директории ')
+        os.chdir(dirname)
     elif choice == 12:
         break
     else:
